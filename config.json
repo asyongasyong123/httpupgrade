@@ -9,7 +9,7 @@
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet?ed=2560"},
+        "httpupgradeSettings": {"path": "/trojan?ed=2560"},
         "security": "tls",
         "tlsSettings": {"allowInsecure": true, "serverName": "cloud.run"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
@@ -23,7 +23,7 @@
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet?ed=2560"},
+        "httpupgradeSettings": {"path": "/vless?ed=2560"},
         "security": "tls",
         "tlsSettings": {"allowInsecure": true, "serverName": "cloud.run"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
@@ -37,7 +37,7 @@
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet?ed=2560"},
+        "httpupgradeSettings": {"path": "/vmess?ed=2560"},
         "security": "tls",
         "tlsSettings": {"allowInsecure": true, "serverName": "cloud.run"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
@@ -51,7 +51,7 @@
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet?ed=2560"},
+        "httpupgradeSettings": {"path": "/ss?ed=2560"},
         "security": "tls",
         "tlsSettings": {"allowInsecure": true, "serverName": "cloud.run"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
