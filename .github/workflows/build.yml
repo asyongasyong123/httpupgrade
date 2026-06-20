@@ -18,8 +18,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           # Use EXACT names below
-          username: ${{ secrets.DOCKER_USERNAME2 }}
-          password: ${{ secrets.DOCKER_PASSWORD2 }}
+          username: ${{ secrets.DOCKER_USERNAME3 }}
+          password: ${{ secrets.DOCKER_PASSWORD3 }}
 
       - name: Build & Push
         uses: docker/build-push-action@v5
