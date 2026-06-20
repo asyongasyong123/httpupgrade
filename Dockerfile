@@ -1,4 +1,5 @@
 FROM alpine:latest
+
 ENV PORT=8080
 
 RUN apk update && apk add --no-cache \
@@ -12,5 +13,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
+
 EXPOSE ${PORT}
+
 CMD ["/entrypoint.sh"]
