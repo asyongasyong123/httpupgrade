@@ -6,80 +6,56 @@
       "listen": "127.0.0.1",
       "protocol": "trojan",
       "settings": {"clients": [{"password": "freenet"}]},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/freenet-envoy/trojan-ws"}
-      }
+      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet-envoy/trojan-ws"}}
     },
     {
       "port": 10001,
       "listen": "127.0.0.1",
       "protocol": "trojan",
       "settings": {"clients": [{"password": "freenet"}]},
-      "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet-envoy/trojan-hu"}
-      }
+      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet-envoy/trojan-hu"}}
     },
     {
       "port": 10002,
       "listen": "127.0.0.1",
       "protocol": "vless",
-      "settings": {"clients": [{"id": "freenet"}]},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/freenet-envoy/vless-ws"}
-      }
+      "settings": {"clients": [{"id": "freenet", "flow": ""}]},
+      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet-envoy/vless-ws"}}
     },
     {
       "port": 10003,
       "listen": "127.0.0.1",
       "protocol": "vless",
-      "settings": {"clients": [{"id": "freenet"}]},
-      "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet-envoy/vless-hu"}
-      }
+      "settings": {"clients": [{"id": "freenet", "flow": ""}]},
+      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet-envoy/vless-hu"}}
     },
     {
       "port": 10004,
       "listen": "127.0.0.1",
       "protocol": "vmess",
-      "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/freenet-envoy/vmess-ws"}
-      }
+      "settings": {"clients": [{"id": "freenet", "alterId": 0, "security": "auto"}]},
+      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet-envoy/vmess-ws"}}
     },
     {
       "port": 10005,
       "listen": "127.0.0.1",
       "protocol": "vmess",
-      "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
-      "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet-envoy/vmess-hu"}
-      }
+      "settings": {"clients": [{"id": "freenet", "alterId": 0, "security": "auto"}]},
+      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet-envoy/vmess-hu"}}
     },
     {
       "port": 10006,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
       "settings": {"method": "aes-256-gcm", "password": "freenet"},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/freenet-envoy/ss-ws"}
-      }
+      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet-envoy/ss-ws"}}
     },
     {
       "port": 10007,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
       "settings": {"method": "aes-256-gcm", "password": "freenet"},
-      "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet-envoy/ss-hu"}
-      }
+      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet-envoy/ss-hu"}}
     }
   ],
   "outbounds": [{"protocol": "freedom"}]
