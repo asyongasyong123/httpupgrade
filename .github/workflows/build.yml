@@ -2,7 +2,8 @@ name: Build & Push to Docker Hub
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'Dockerfile'
       - 'config.json'
@@ -27,7 +28,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build & Push Image
+      - name: Build and push image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -36,5 +37,5 @@ jobs:
           cache-from: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max
 
-      - name: Confirm Result
-        run: echo "✅ Successfully pushed: ${DOCKER_USER}/${DOCKER_REPO}:${IMAGE_TAG}"
+      - name: Done
+        run: echo "✅ Image pushed: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
