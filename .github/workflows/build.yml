@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
+          tags: DOCKER_USER3/httpupgrade:latest
 
       - name: Done
-        run: echo "✅ Pushed: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
+        run: echo "✅ Image built and pushed successfully"
