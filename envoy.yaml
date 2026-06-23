@@ -18,71 +18,71 @@ static_resources:
               domains: ["*"]
               routes:
               - match: { path: "/freenet-envoy/trojan-ws" }
-                route: { cluster: xray_trojan_ws, timeout: "0s", upgrade_configs: [{ upgrade_type: "websocket" }] }
+                route: { cluster: xray_trojan_ws, upgrade_configs: [{ upgrade_type: websocket }] }
               - match: { path: "/freenet-envoy/trojan-hu" }
-                route: { cluster: xray_trojan_hu, timeout: "0s" }
+                route: { cluster: xray_trojan_hu }
               - match: { path: "/freenet-envoy/vless-ws" }
-                route: { cluster: xray_vless_ws, timeout: "0s", upgrade_configs: [{ upgrade_type: "websocket" }] }
+                route: { cluster: xray_vless_ws, upgrade_configs: [{ upgrade_type: websocket }] }
               - match: { path: "/freenet-envoy/vless-hu" }
-                route: { cluster: xray_vless_hu, timeout: "0s" }
+                route: { cluster: xray_vless_hu }
               - match: { path: "/freenet-envoy/vmess-ws" }
-                route: { cluster: xray_vmess_ws, timeout: "0s", upgrade_configs: [{ upgrade_type: "websocket" }] }
+                route: { cluster: xray_vmess_ws, upgrade_configs: [{ upgrade_type: websocket }] }
               - match: { path: "/freenet-envoy/vmess-hu" }
-                route: { cluster: xray_vmess_hu, timeout: "0s" }
+                route: { cluster: xray_vmess_hu }
               - match: { path: "/freenet-envoy/ss-ws" }
-                route: { cluster: xray_ss_ws, timeout: "0s", upgrade_configs: [{ upgrade_type: "websocket" }] }
+                route: { cluster: xray_ss_ws, upgrade_configs: [{ upgrade_type: websocket }] }
               - match: { path: "/freenet-envoy/ss-hu" }
-                route: { cluster: xray_ss_hu, timeout: "0s" }
+                route: { cluster: xray_ss_hu }
           http_filters:
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
   clusters:
   - name: xray_trojan_ws
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10000 } } } }] }]
   - name: xray_trojan_hu
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10001 } } } }] }]
   - name: xray_vless_ws
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10002 } } } }] }]
   - name: xray_vless_hu
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10003 } } } }] }]
   - name: xray_vmess_ws
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10004 } } } }] }]
   - name: xray_vmess_hu
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10005 } } } }] }]
   - name: xray_ss_ws
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10006 } } } }] }]
   - name: xray_ss_hu
-    connect_timeout: 3s
-    type: STATIC
+    connect_timeout: 5s
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       endpoints: [{ lb_endpoints: [{ endpoint: { address: { socket_address: { address: "127.0.0.1", port_value: 10007 } } } }] }]
