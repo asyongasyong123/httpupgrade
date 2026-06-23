@@ -1,0 +1,115 @@
+static_resources:
+  listeners:
+  - name: listener_0
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 8080
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: ["*"]
+              routes:
+              - match: {prefix: "/freenet/trojan-ws"}
+                route: {cluster: trojan_ws, upgrade_configs: [{upgrade_type: websocket}]}
+              - match: {prefix: "/freenet/trojan-hu"}
+                route: {cluster: trojan_hu}
+              - match: {prefix: "/freenet/trojan-xhttp"}
+                route: {cluster: trojan_xhttp}
+
+              - match: {prefix: "/freenet/vless-ws"}
+                route: {cluster: vless_ws, upgrade_configs: [{upgrade_type: websocket}]}
+              - match: {prefix: "/freenet/vless-hu"}
+                route: {cluster: vless_hu}
+              - match: {prefix: "/freenet/vless-xhttp"}
+                route: {cluster: vless_xhttp}
+
+              - match: {prefix: "/freenet/vmess-ws"}
+                route: {cluster: vmess_ws, upgrade_configs: [{upgrade_type: websocket}]}
+              - match: {prefix: "/freenet/vmess-hu"}
+                route: {cluster: vmess_hu}
+              - match: {prefix: "/freenet/vmess-xhttp"}
+                route: {cluster: vmess_xhttp}
+
+              - match: {prefix: "/freenet/ss-ws"}
+                route: {cluster: ss_ws, upgrade_configs: [{upgrade_type: websocket}]}
+              - match: {prefix: "/freenet/ss-hu"}
+                route: {cluster: ss_hu}
+              - match: {prefix: "/freenet/ss-xhttp"}
+                route: {cluster: ss_xhttp}
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+
+  clusters:
+  - name: trojan_ws
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: trojan_ws, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 10001}}}}]}]}
+  - name: trojan_hu
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: trojan_hu, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 10002}}}}]}]}
+  - name: trojan_xhttp
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: trojan_xhttp, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 10003}}}}]}]}
+
+  - name: vless_ws
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vless_ws, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 20001}}}}]}]}
+  - name: vless_hu
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vless_hu, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 20002}}}}]}]}
+  - name: vless_xhttp
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vless_xhttp, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 20003}}}}]}]}
+
+  - name: vmess_ws
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vmess_ws, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 30001}}}}]}]}
+  - name: vmess_hu
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vmess_hu, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 30002}}}}]}]}
+  - name: vmess_xhttp
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: vmess_xhttp, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 30003}}}}]}]}
+
+  - name: ss_ws
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: ss_ws, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 40001}}}}]}]}
+  - name: ss_hu
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: ss_hu, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 40002}}}}]}]}
+  - name: ss_xhttp
+    connect_timeout: 1s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    load_assignment: {cluster_name: ss_xhttp, endpoints: [{lb_endpoints: [{endpoint: {address: {socket_address: {address: 127.0.0.1, port_value: 40003}}}}]}]}
