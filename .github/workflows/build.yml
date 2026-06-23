@@ -37,5 +37,5 @@ jobs:
           cache-from: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max
 
-      - name: Done
-        run: echo "✅ Image pushed: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
+      - name: Finished
+        run: echo "✅ Successfully pushed image"
