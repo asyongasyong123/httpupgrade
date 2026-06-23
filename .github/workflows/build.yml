@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'Dockerfile'
-      - 'config.json'
-      - 'envoy.yaml'
+      - Dockerfile
+      - config.json
+      - envoy.yaml
   workflow_dispatch:
 
 env:
@@ -16,7 +16,7 @@ env:
   IMAGE_TAG: latest
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,14 +28,12 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and push image
+      - name: Build & Push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
-          cache-from: 'type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache'
-          cache-to: 'type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max'
 
-      - name: Finished
-        run: echo "✅ Successfully pushed image"
+      - name: Done
+        run: echo "✅ Pushed: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
