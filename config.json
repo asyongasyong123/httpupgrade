@@ -1,56 +1,91 @@
 {
   "log": {"loglevel": "warn"},
   "inbounds": [
-    {"port": 10001, "listen": "127.0.0.1", "protocol": "trojan",
-      "settings": {"clients": [{"password": "stsnoload"}]},
-      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet/trojan-ws"}}
+    {
+      "port": 10000,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {"clients": [{"password": "freenet"}]},
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {"path": "/freenet+envoy/trojan-ws"}
+      }
     },
-    {"port": 10002, "listen": "127.0.0.1", "protocol": "trojan",
-      "settings": {"clients": [{"password": "stsnoload"}]},
-      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet/trojan-hu"}}
+    {
+      "port": 10001,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {"clients": [{"password": "freenet"}]},
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {"path": "/freenet+envoy/trojan-hu"}
+      }
     },
-    {"port": 10003, "listen": "127.0.0.1", "protocol": "trojan",
-      "settings": {"clients": [{"password": "stsnoload"}]},
-      "streamSettings": {"network": "xhttp", "xhttpSettings": {"path": "/freenet/trojan-xhttp"}}
+    {
+      "port": 10002,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {"clients": [{"id": "freenet"}]},
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {"path": "/freenet+envoy/vless-ws"}
+      }
     },
-
-    {"port": 20001, "listen": "127.0.0.1", "protocol": "vless",
-      "settings": {"clients": [{"id": "stsnoload", "flow": ""}]},
-      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet/vless-ws"}}
+    {
+      "port": 10003,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {"clients": [{"id": "freenet"}]},
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {"path": "/freenet+envoy/vless-hu"}
+      }
     },
-    {"port": 20002, "listen": "127.0.0.1", "protocol": "vless",
-      "settings": {"clients": [{"id": "stsnoload", "flow": ""}]},
-      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet/vless-hu"}}
+    {
+      "port": 10004,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {"path": "/freenet+envoy/vmess-ws"}
+      }
     },
-    {"port": 20003, "listen": "127.0.0.1", "protocol": "vless",
-      "settings": {"clients": [{"id": "stsnoload", "flow": ""}]},
-      "streamSettings": {"network": "xhttp", "xhttpSettings": {"path": "/freenet/vless-xhttp"}}
+    {
+      "port": 10005,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {"path": "/freenet+envoy/vmess-hu"}
+      }
     },
-
-    {"port": 30001, "listen": "127.0.0.1", "protocol": "vmess",
-      "settings": {"clients": [{"id": "stsnoload", "alterId": 0}]},
-      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet/vmess-ws"}}
+    {
+      "port": 10006,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "aes-256-gcm",
+        "password": "freenet"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {"path": "/freenet+envoy/ss-ws"}
+      }
     },
-    {"port": 30002, "listen": "127.0.0.1", "protocol": "vmess",
-      "settings": {"clients": [{"id": "stsnoload", "alterId": 0}]},
-      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet/vmess-hu"}}
-    },
-    {"port": 30003, "listen": "127.0.0.1", "protocol": "vmess",
-      "settings": {"clients": [{"id": "stsnoload", "alterId": 0}]},
-      "streamSettings": {"network": "xhttp", "xhttpSettings": {"path": "/freenet/vmess-xhttp"}}
-    },
-
-    {"port": 40001, "listen": "127.0.0.1", "protocol": "shadowsocks",
-      "settings": {"method": "aes-256-gcm", "password": "stsnoload"},
-      "streamSettings": {"network": "ws", "wsSettings": {"path": "/freenet/ss-ws"}}
-    },
-    {"port": 40002, "listen": "127.0.0.1", "protocol": "shadowsocks",
-      "settings": {"method": "aes-256-gcm", "password": "stsnoload"},
-      "streamSettings": {"network": "httpupgrade", "httpupgradeSettings": {"path": "/freenet/ss-hu"}}
-    },
-    {"port": 40003, "listen": "127.0.0.1", "protocol": "shadowsocks",
-      "settings": {"method": "aes-256-gcm", "password": "stsnoload"},
-      "streamSettings": {"network": "xhttp", "xhttpSettings": {"path": "/freenet/ss-xhttp"}}
+    {
+      "port": 10007,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "aes-256-gcm",
+        "password": "freenet"
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {"path": "/freenet+envoy/ss-hu"}
+      }
     }
   ],
   "outbounds": [{"protocol": "freedom"}]
