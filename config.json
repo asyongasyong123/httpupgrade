@@ -8,7 +8,7 @@
       "settings": {"clients": [{"password": "freenet"}]},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/freenet+envoy/trojan-ws"}
+        "wsSettings": {"path": "/freenet-envoy/trojan-ws"}
       }
     },
     {
@@ -18,7 +18,7 @@
       "settings": {"clients": [{"password": "freenet"}]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet+envoy/trojan-hu"}
+        "httpupgradeSettings": {"path": "/freenet-envoy/trojan-hu"}
       }
     },
     {
@@ -28,7 +28,7 @@
       "settings": {"clients": [{"id": "freenet"}]},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/freenet+envoy/vless-ws"}
+        "wsSettings": {"path": "/freenet-envoy/vless-ws"}
       }
     },
     {
@@ -38,7 +38,7 @@
       "settings": {"clients": [{"id": "freenet"}]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet+envoy/vless-hu"}
+        "httpupgradeSettings": {"path": "/freenet-envoy/vless-hu"}
       }
     },
     {
@@ -48,7 +48,7 @@
       "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/freenet+envoy/vmess-ws"}
+        "wsSettings": {"path": "/freenet-envoy/vmess-ws"}
       }
     },
     {
@@ -58,33 +58,27 @@
       "settings": {"clients": [{"id": "freenet", "alterId": 0}]},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet+envoy/vmess-hu"}
+        "httpupgradeSettings": {"path": "/freenet-envoy/vmess-hu"}
       }
     },
     {
       "port": 10006,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
-      "settings": {
-        "method": "aes-256-gcm",
-        "password": "freenet"
-      },
+      "settings": {"method": "aes-256-gcm", "password": "freenet"},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/freenet+envoy/ss-ws"}
+        "wsSettings": {"path": "/freenet-envoy/ss-ws"}
       }
     },
     {
       "port": 10007,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
-      "settings": {
-        "method": "aes-256-gcm",
-        "password": "freenet"
-      },
+      "settings": {"method": "aes-256-gcm", "password": "freenet"},
       "streamSettings": {
         "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/freenet+envoy/ss-hu"}
+        "httpupgradeSettings": {"path": "/freenet-envoy/ss-hu"}
       }
     }
   ],
