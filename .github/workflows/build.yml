@@ -34,8 +34,8 @@ jobs:
           context: .
           push: true
           tags: ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
-          cache-from: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache
-          cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max
+          cache-from: 'type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache'
+          cache-to: 'type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max'
 
       - name: Finished
         run: echo "✅ Successfully pushed image"
