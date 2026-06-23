@@ -9,4 +9,4 @@ RUN chmod +x /usr/local/bin/xray
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-c", "xray run -c /etc/xray/config.json & sleep 6 && exec envoy -c /etc/envoy/envoy.yaml --log-level warn"]
+CMD ["/bin/sh", "-c", "xray run -c /etc/xray/config.json & sleep 10 && exec envoy -c /etc/envoy/envoy.yaml --log-level warn"]
