@@ -3,10 +3,10 @@ name: Build & Push to Docker Hub
 on:
   push:
     branches: [ main ]
-  paths:
-    - 'Dockerfile'
-    - 'config.json'
-    - 'envoy.yaml'
+    paths:
+      - 'Dockerfile'
+      - 'config.json'
+      - 'envoy.yaml'
   workflow_dispatch:
 
 env:
@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build & Push
+      - name: Build & Push Image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -36,5 +36,5 @@ jobs:
           cache-from: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKER_USER }}/${{ env.DOCKER_REPO }}:buildcache,mode=max
 
-      - name: Result
-        run: echo "✅ Pushed → ${DOCKER_USER}/${DOCKER_REPO}:${IMAGE_TAG}"
+      - name: Confirm Result
+        run: echo "✅ Successfully pushed: ${DOCKER_USER}/${DOCKER_REPO}:${IMAGE_TAG}"
